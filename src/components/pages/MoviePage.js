@@ -1,32 +1,38 @@
-////created with rcredux (a class component)
-
+//Created by [rcredux] snippet.
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import PropTypes from 'prop-types'
+import PropTypes from 'prop-types';
 import MovieList from '../MovieList'
-
+import {fetchMovies  } from '../../actions/moviesAction';
 
 export class MoviePage extends Component {
-    static propTypes={
-        movies:PropTypes.array.isRequired
+    static propTypes = {
+        moviesRe:PropTypes.object.isRequired
     }
-    render() {
-        console.log(this.props)
+
+    componentDidMount() {
+        this.props.fetchMovies();
+    }
+    
+    render() {        
+   //console.log("Props:",this.props.moviesRe.error);
+    const errMessage = this.props.moviesRe.error.message
         return (
             <div>
-                <h2> MoviePage comp</h2>
-                <MovieList movies={this.props.movies}/>
+                {errMessage 
+                ? <h3> Error Data! <br/> {errMessage}</h3>
+                : <MovieList movies={this.props.moviesRe.movies} loading={this.props.moviesRe.loading}/>
+                }
+                
             </div>
         )
     }
 }
 
 const mapStateToProps = ({moviesReducer}) => ({
-    movies:moviesReducer
+    moviesRe:moviesReducer
 })
 
-const mapDispatchToProps = {
-    
-}
+const mapDispatchToProps = {fetchMovies }
 
 export default connect(mapStateToProps, mapDispatchToProps)(MoviePage)

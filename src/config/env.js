@@ -1,1 +1,1 @@
-export const API_BASE ="http://localhost:8080/api"
+export const API_BASE ="https://60a557ffc0c1fd00175f3bb3.mockapi.io"
