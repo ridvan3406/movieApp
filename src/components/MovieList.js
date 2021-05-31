@@ -4,16 +4,16 @@ import MovieCard from './MovieCard'
 import { Grid } from 'semantic-ui-react'
 import {HashLoader} from "react-spinners";
 
-function MovieList({movies,loading}) {
+function MovieList({movies,loading,deleteMovie}) {
     //console.log("MovieList Props",movies);
 
     const emptyMessage= <p>There are no movies yet.</p>
     const movieList = (
       <Grid>
-        <Grid.Row columns={4}>
+        <Grid.Row columns={3}>
           {movies.map((item) => (
             <Grid.Column key={item.id}>
-              <MovieCard movie={item} />
+              <MovieCard deleteMovie={deleteMovie} movie={item} />
             </Grid.Column>
           ))}
         </Grid.Row>

@@ -1,7 +1,8 @@
 import React from 'react'
-import { Card, Icon, Image } from 'semantic-ui-react'
+import { Link } from 'react-router-dom'
+import { Card, Icon, Image,Button } from 'semantic-ui-react'
 
-const MovieCard = ({movie}) => (
+const MovieCard = ({movie,deleteMovie}) => (
   <Card>
     <Image src={movie.cover} wrapped ui={false} />
     <Card.Content>
@@ -14,10 +15,16 @@ const MovieCard = ({movie}) => (
       </Card.Description>
     </Card.Content>
     <Card.Content extra>
-      <a>
-        <Icon name='user' />
-        VIEWS
-      </a>
+    <Button.Group size='mini'>
+        <Button onClick={()=>deleteMovie(movie.id)} color='red' icon labelPosition='left'>
+          <Icon name='trash alternate' />
+          Delete
+        </Button>
+        <Button as={Link} to={`/movie/${movie.id}`} icon labelPosition='right'>
+          Edit
+          <Icon name='edit' />
+        </Button>
+    </Button.Group>
     </Card.Content>
   </Card>
 )
