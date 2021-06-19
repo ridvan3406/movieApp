@@ -8,7 +8,7 @@ const MovieCard = ({movie,deleteMovie}) => (
     <Card.Content>
       <Card.Header>{movie.title}</Card.Header>
       <Card.Meta>
-        <span className='date'>{movie.year}</span>
+        {/* <span className='date'>{movie.year}</span> */}
       </Card.Meta>
       <Card.Description>
         

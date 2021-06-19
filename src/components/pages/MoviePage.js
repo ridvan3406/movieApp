@@ -19,7 +19,6 @@ export class MoviePage extends Component {
     const errMessage = this.props.moviesRe.error.message
         return (
             <div>
-                <h2>MoviePage Comp.</h2>
                 {errMessage 
                 ? <h3> Error Data! <br/> {errMessage}</h3>
                 : <MovieList
