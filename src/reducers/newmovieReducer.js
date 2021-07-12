@@ -17,7 +17,6 @@ import { ADD_MOVIES_FULFILLED,ADD_MOVIES_PENDING,ADD_MOVIES_REJECTED,
                 return { ...state,movies:payload,loading:false,done:true }
             case ADD_MOVIES_REJECTED:
                 return { ...state,error:payload,loading:false,done:false }
-    
             //type==UPDATE_MOVIE
             case UPDATE_MOVIE_PENDING:
                 return { ...state,loading:true,done:false }
